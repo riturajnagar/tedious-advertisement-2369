@@ -25,6 +25,7 @@ public class GetAllBuyerUsecase {
 
 		} catch (BuyerException e) {
 			e.printStackTrace();
+			
 		}
 	}
 }
