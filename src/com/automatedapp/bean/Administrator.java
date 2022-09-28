@@ -4,17 +4,19 @@ public class Administrator {
 	private int aID;
 	private String aName;
 	private String aEmail;
+	private String aPassword;
 
 	public Administrator() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Administrator(int aID, String aName, String aEmail) {
+	public Administrator(int aID, String aName, String aEmail, String aPassword) {
 		super();
 		this.aID = aID;
 		this.aName = aName;
 		this.aEmail = aEmail;
+		this.aPassword = aPassword;
 	}
 
 	public int getaID() {
@@ -41,9 +43,18 @@ public class Administrator {
 		this.aEmail = aEmail;
 	}
 
+	public String getaPassword() {
+		return aPassword;
+	}
+
+	public void setaPassword(String aPassword) {
+		this.aPassword = aPassword;
+	}
+
 	@Override
 	public String toString() {
-		return "Administrator [aID=" + aID + ", aName=" + aName + ", aEmail=" + aEmail + "]";
+		return "Administrator [aID=" + aID + ", aName=" + aName + ", aEmail=" + aEmail + ", aPassword=" + aPassword
+				+ "]";
 	}
 
 }
