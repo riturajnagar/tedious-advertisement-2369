@@ -5,17 +5,19 @@ public class Buyer {
 	private int bId;
 	private String bName;
 	private String bEmail;
+	private String bPassword;
 
 	public Buyer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Buyer(int bId, String bName, String bEmail) {
+	public Buyer(int bId, String bName, String bEmail, String bPassword) {
 		super();
 		this.bId = bId;
 		this.bName = bName;
 		this.bEmail = bEmail;
+		this.bPassword = bPassword;
 	}
 
 	public int getbId() {
@@ -42,9 +44,17 @@ public class Buyer {
 		this.bEmail = bEmail;
 	}
 
+	public String getbPassword() {
+		return bPassword;
+	}
+
+	public void setbPassword(String bPassword) {
+		this.bPassword = bPassword;
+	}
+
 	@Override
 	public String toString() {
-		return "Buyer [bId=" + bId + ", bName=" + bName + ", bEmail=" + bEmail + "]";
+		return "Buyer [bId=" + bId + ", bName=" + bName + ", bEmail=" + bEmail + ", bPassword=" + bPassword + "]";
 	}
 
 }
