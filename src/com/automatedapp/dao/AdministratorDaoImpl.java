@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import com.automatedapp.bean.Administrator;
 import com.automatedapp.bean.Buyer;
 import com.automatedapp.bean.Seller;
+import com.automatedapp.exceptions.AdminException;
 import com.automatedapp.exceptions.BuyerException;
 import com.automatedapp.exceptions.SellerException;
 import com.automatedapp.utility.DBUtil;
@@ -75,6 +78,43 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		}
 
 		return sellers;
+	}
+
+	@Override
+	public Administrator loginAdmin() throws AdminException {
+		Administrator admin = null;
+
+		Scanner scn = new Scanner(System.in);
+		System.out.print("Enter admin email: ");
+		String aemail = scn.next();
+		System.out.print("Enter admin password: ");
+		String password = scn.next();
+
+		Connection conn = DBUtil.getConnection();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement("select * from administrator");
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				admin = new Administrator(rs.getInt("aId"), rs.getString("aName"), rs.getString("aemail"),
+						rs.getString("aPassword"));
+			} else {
+				throw new AdminException("Admin not found");
+			}
+			
+			if(admin.getaEmail().equals(aemail) && admin.getaPassword().equals(password)) {
+				System.out.println("Login Successfull");
+			}else {
+				
+				throw new AdminException("Incorrect Id or Password");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return admin;
 	}
 
 }

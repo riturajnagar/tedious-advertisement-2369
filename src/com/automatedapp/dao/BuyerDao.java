@@ -1,5 +1,9 @@
 package com.automatedapp.dao;
 
-public interface BuyerDao {
+import com.automatedapp.bean.Buyer;
 
+import com.automatedapp.exceptions.BuyerException;
+
+public interface BuyerDao {
+	public Buyer loginBuyer() throws BuyerException;
 }
